@@ -25,6 +25,7 @@ Build-Fixer is an intelligent CI/CD tool that automatically analyzes failed buil
 - [Azure DevOps Pipeline Integration](#azure-devops-pipeline-integration)
 - [API Documentation](#api-documentation)
 - [Examples](#examples)
+- [Enterprise Documentation](#enterprise-documentation)
 - [Contributing](#contributing)
 
 ## 💡 Justification
@@ -456,6 +457,34 @@ Process a build failure from an existing S3 log file.
 See the `examples/` directory for:
 - `usage-example.js`: Programmatic usage examples
 - `azure-pipeline.yml`: Complete Azure DevOps pipeline integration
+
+## 🏢 Enterprise Documentation
+
+Build-Fixer includes comprehensive documentation for enterprise deployments:
+
+### Architecture & Design
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Detailed system architecture and design patterns
+- **[ENTERPRISE_ARCHITECTURE.md](docs/ENTERPRISE_ARCHITECTURE.md)** - Enterprise deployment patterns and scalability
+- **[TECHNOLOGY_STACK.md](docs/TECHNOLOGY_STACK.md)** - Technology evaluation and selection rationale
+- **[ADR/](docs/ADR/)** - Architectural Decision Records documenting key decisions
+
+### Operations & Security
+- **[OPERATIONS.md](docs/OPERATIONS.md)** - Operations runbook, troubleshooting, and maintenance
+- **[SECURITY.md](docs/SECURITY.md)** - Security best practices, threat model, and compliance
+- **[DATA_GOVERNANCE.md](docs/DATA_GOVERNANCE.md)** - Data classification, retention, and privacy policies
+
+### Integration & Development
+- **[INTEGRATION_PATTERNS.md](docs/INTEGRATION_PATTERNS.md)** - API design, webhooks, and integration patterns
+- **[ROADMAP.md](docs/ROADMAP.md)** - Product roadmap and future features
+- **[QUICK_START.md](docs/QUICK_START.md)** - 15-minute quick start guide
+- **[TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)** - Common issues and solutions
+
+### For Enterprise Architects
+If you're evaluating Build-Fixer for enterprise use, start with:
+1. [ENTERPRISE_ARCHITECTURE.md](docs/ENTERPRISE_ARCHITECTURE.md) - Deployment options and patterns
+2. [SECURITY.md](docs/SECURITY.md) - Security controls and compliance
+3. [DATA_GOVERNANCE.md](docs/DATA_GOVERNANCE.md) - Data handling and privacy
+4. [ADR/](docs/ADR/) - Decision rationale and trade-offs
 
 ## 🤝 Contributing
 
