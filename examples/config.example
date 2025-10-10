@@ -1,0 +1,28 @@
+# Example Configuration File
+# Copy this to .env and fill in your values
+
+# AWS Configuration
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+S3_BUCKET_NAME=your-build-logs-bucket
+BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
+
+# Azure DevOps Configuration
+AZURE_DEVOPS_ORG_URL=https://dev.azure.com/your-organization
+AZURE_DEVOPS_PAT=your_personal_access_token
+AZURE_DEVOPS_PROJECT=YourProjectName
+
+# Work Item Configuration (Optional)
+WORK_ITEM_TYPE=User Story
+WORK_ITEM_TAGS=build-failure,automated
+# WORK_ITEM_ASSIGNED_TO=user@example.com
+# WORK_ITEM_AREA_PATH=YourProject\Area
+# WORK_ITEM_ITERATION_PATH=YourProject\Sprint1
+
+# Build Context (These are usually auto-populated in Azure Pipelines)
+# BUILD_BUILDID=123456
+# BUILD_BUILDNUMBER=20240110.1
+# BUILD_REASON=Manual
+# BUILD_REPOSITORY_NAME=MyRepo
+# BUILD_SOURCEBRANCHNAME=main

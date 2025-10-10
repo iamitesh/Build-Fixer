@@ -1,0 +1,28 @@
+2024-01-10T14:30:22.123Z Starting build for repository: MyWebApp
+2024-01-10T14:30:22.456Z Build ID: 123456
+2024-01-10T14:30:22.789Z Branch: main
+2024-01-10T14:30:23.012Z Agent: Azure Pipelines Agent (ubuntu-latest)
+2024-01-10T14:30:23.345Z ===================================
+2024-01-10T14:30:23.678Z Restore NuGet packages
+2024-01-10T14:30:24.901Z Restoring packages for MyWebApp.csproj...
+2024-01-10T14:30:28.234Z Successfully restored packages
+2024-01-10T14:30:28.567Z ===================================
+2024-01-10T14:30:28.890Z Build solution
+2024-01-10T14:30:29.123Z Building MyWebApp.sln
+2024-01-10T14:30:35.456Z Microsoft (R) Build Engine version 17.0.0
+2024-01-10T14:30:35.789Z Building project: MyWebApp.csproj
+2024-01-10T14:30:40.012Z Compiling source files...
+2024-01-10T14:30:45.345Z Controllers/HomeController.cs(42,25): error CS0103: The name 'ConfigurationManager' does not exist in the current context
+2024-01-10T14:30:45.678Z Controllers/HomeController.cs(43,25): error CS0103: The name 'ConfigurationManager' does not exist in the current context
+2024-01-10T14:30:45.901Z   0 Warning(s)
+2024-01-10T14:30:45.234Z   2 Error(s)
+2024-01-10T14:30:45.567Z 
+2024-01-10T14:30:45.890Z Time Elapsed 00:00:16.78
+2024-01-10T14:30:46.123Z ##[error]Build failed with 2 error(s)
+2024-01-10T14:30:46.456Z ##[error]Process exited with code 1
+2024-01-10T14:30:46.789Z ===================================
+2024-01-10T14:30:47.012Z Build Summary
+2024-01-10T14:30:47.345Z Status: Failed
+2024-01-10T14:30:47.678Z Duration: 24 seconds
+2024-01-10T14:30:47.901Z Errors: 2
+2024-01-10T14:30:47.234Z Warnings: 0
