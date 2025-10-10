@@ -1,0 +1,25 @@
+{
+  "name": "build-fixer",
+  "version": "1.0.0",
+  "description": "Automated build failure analyzer and fixer for Azure DevOps pipelines using AWS Bedrock and S3",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "keywords": [
+    "azure-devops",
+    "build-fixer",
+    "aws-bedrock",
+    "ci-cd",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.478.0",
+    "@aws-sdk/client-s3": "^3.478.0",
+    "azure-devops-node-api": "^12.5.0",
+    "dotenv": "^16.3.1"
+  }
+}

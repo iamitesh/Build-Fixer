@@ -1,0 +1,32 @@
+Starting build process...
+Build ID: 12345
+Branch: main
+Commit: abc123def456
+
+Installing dependencies...
+npm install
+added 500 packages in 45s
+
+Running linter...
+npm run lint
+✓ All files passed linting
+
+Building application...
+npm run build
+> build
+> webpack --mode production
+
+Building project...
+Compiling TypeScript files...
+src/index.ts(45,12): error TS2304: Cannot find name 'InvalidModule'.
+src/services/api.ts(78,5): error TS2322: Type 'string' is not assignable to type 'number'.
+src/utils/helper.ts(12,3): error TS2551: Property 'configuraton' does not exist on type 'Config'. Did you mean 'configuration'?
+
+Found 3 errors. Compilation failed.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 2
+npm ERR! build-app@1.0.0 build: `webpack --mode production`
+npm ERR! Exit status 2
+
+Build FAILED
+Total time: 2m 34s

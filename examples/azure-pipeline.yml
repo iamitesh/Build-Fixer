@@ -1,0 +1,80 @@
+# Azure DevOps Pipeline Integration Example
+# This pipeline demonstrates how to integrate Build-Fixer into your CI/CD pipeline
+
+trigger:
+  - main
+  - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: build-fixer-config  # Variable group containing AWS and Azure DevOps credentials
+
+stages:
+  - stage: Build
+    displayName: 'Build Stage'
+    jobs:
+      - job: BuildJob
+        displayName: 'Build and Test'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              npm install
+              npm run build
+            displayName: 'Build Application'
+            continueOnError: true  # Continue even if build fails
+            
+          - script: |
+              npm test
+            displayName: 'Run Tests'
+            continueOnError: true  # Continue even if tests fail
+
+  - stage: AnalyzeFailure
+    displayName: 'Analyze Build Failure'
+    condition: failed()  # Only run if previous stage failed
+    dependsOn: Build
+    jobs:
+      - job: AnalyzeJob
+        displayName: 'Analyze with Build-Fixer'
+        steps:
+          - checkout: self
+          
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              # Clone Build-Fixer repository
+              git clone https://github.com/iamitesh/Build-Fixer.git
+              cd Build-Fixer
+              npm install
+            displayName: 'Setup Build-Fixer'
+
+          - script: |
+              # Download build logs
+              echo "Downloading build logs..."
+              # Azure DevOps automatically saves logs, we can access them via API
+              # For this example, we'll assume the log is saved to a file
+              
+              # Run Build-Fixer
+              cd Build-Fixer
+              node src/index.js \
+                --log-file $(System.DefaultWorkingDirectory)/build.log \
+                --build-id $(Build.BuildId) \
+                --build-url $(System.CollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)
+            displayName: 'Run Build-Fixer Analysis'
+            env:
+              AWS_REGION: $(AWS_REGION)
+              AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+              AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+              AWS_S3_BUCKET_NAME: $(AWS_S3_BUCKET_NAME)
+              AWS_BEDROCK_MODEL_ID: $(AWS_BEDROCK_MODEL_ID)
+              AZURE_DEVOPS_ORG_URL: $(System.CollectionUri)
+              AZURE_DEVOPS_TOKEN: $(AZURE_DEVOPS_TOKEN)
+              AZURE_DEVOPS_PROJECT: $(System.TeamProject)
