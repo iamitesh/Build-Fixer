@@ -1,0 +1,116 @@
+# Example Azure DevOps Pipeline with Build-Fixer Integration
+# This pipeline demonstrates how to integrate Build-Fixer to automatically
+# analyze build failures and create work items
+
+trigger:
+  branches:
+    include:
+    - main
+    - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Build-Fixer Configuration
+  S3_BUCKET_NAME: 'your-build-logs-bucket'
+  BEDROCK_MODEL_ID: 'anthropic.claude-3-sonnet-20240229-v1:0'
+  AZURE_DEVOPS_PROJECT: 'YourProjectName'
+  WORK_ITEM_TYPE: 'User Story'  # or 'Bug'
+  WORK_ITEM_TAGS: 'build-failure,automated'
+  
+  # These should be set as secret variables in Azure DevOps
+  # AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+  # AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+  # AZURE_DEVOPS_PAT: $(AZURE_DEVOPS_PAT)
+
+stages:
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build and Test'
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.9'
+      displayName: 'Use Python 3.9'
+    
+    - script: |
+        # Your build commands here
+        # Example:
+        pip install -r requirements.txt
+        python -m pytest
+      displayName: 'Build and Test'
+      continueOnError: false
+    
+    # Capture build logs on failure
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)'
+        artifactName: 'build-logs'
+      condition: failed()
+      displayName: 'Publish Build Logs on Failure'
+
+- stage: AnalyzeFailure
+  displayName: 'Analyze Build Failure'
+  dependsOn: Build
+  condition: failed()
+  jobs:
+  - job: AnalyzeJob
+    displayName: 'Run Build-Fixer Analysis'
+    steps:
+    - checkout: self
+    
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.9'
+      displayName: 'Use Python 3.9'
+    
+    # Install Build-Fixer
+    - script: |
+        git clone https://github.com/iamitesh/Build-Fixer.git
+        cd Build-Fixer
+        pip install -r requirements.txt
+      displayName: 'Install Build-Fixer'
+    
+    # Capture build log
+    - script: |
+        # Save the build log to a file
+        # Note: In a real scenario, you'd capture the actual build log
+        echo "Capturing build log for Build #$(Build.BuildNumber)..."
+        
+        # For this example, we'll create a sample log
+        # In practice, you would download from Azure DevOps or capture actual logs
+        cat > build_failure.log << 'EOF'
+        Build started...
+        Error: Module not found
+        Build failed with exit code 1
+        EOF
+      displayName: 'Capture Build Log'
+    
+    # Run Build-Fixer
+    - script: |
+        cd Build-Fixer
+        export AWS_REGION=us-east-1
+        export AWS_ACCESS_KEY_ID=$(AWS_ACCESS_KEY_ID)
+        export AWS_SECRET_ACCESS_KEY=$(AWS_SECRET_ACCESS_KEY)
+        export S3_BUCKET_NAME=$(S3_BUCKET_NAME)
+        export BEDROCK_MODEL_ID=$(BEDROCK_MODEL_ID)
+        export AZURE_DEVOPS_ORG_URL=$(System.CollectionUri)
+        export AZURE_DEVOPS_PAT=$(AZURE_DEVOPS_PAT)
+        export AZURE_DEVOPS_PROJECT=$(AZURE_DEVOPS_PROJECT)
+        export WORK_ITEM_TYPE=$(WORK_ITEM_TYPE)
+        export WORK_ITEM_TAGS=$(WORK_ITEM_TAGS)
+        export BUILD_BUILDID=$(Build.BuildId)
+        export BUILD_BUILDNUMBER=$(Build.BuildNumber)
+        export BUILD_REASON=$(Build.Reason)
+        export BUILD_REPOSITORY_NAME=$(Build.Repository.Name)
+        export BUILD_SOURCEBRANCHNAME=$(Build.SourceBranchName)
+        
+        python -m build_fixer.main ../build_failure.log --verbose
+      displayName: 'Run Build-Fixer Analysis'
+      env:
+        AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+        AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+        AZURE_DEVOPS_PAT: $(AZURE_DEVOPS_PAT)

@@ -1,0 +1,4 @@
+boto3>=1.34.0
+azure-devops>=7.1.0b4
+msrest>=0.7.1
+python-dotenv>=1.0.0
