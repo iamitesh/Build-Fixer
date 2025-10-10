@@ -149,6 +149,19 @@ cd Build-Fixer
 pip install -r requirements.txt
 ```
 
+### Validate Installation
+
+```bash
+python validate.py
+```
+
+This will check:
+- Python version compatibility
+- Required dependencies
+- Configuration completeness
+- AWS and Azure DevOps connectivity (if configured)
+- Example files presence
+
 ## Configuration
 
 Build-Fixer is configured via environment variables:
