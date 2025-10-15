@@ -318,7 +318,10 @@ See [azure-pipeline-example.yml](azure-pipeline-example.yml) for a complete exam
 
 ## Rollout Plan
 
-Planning to deploy Build-Fixer in your organization? **[Start here: Rollout Getting Started Guide](ROLLOUT_GETTING_STARTED.md)** for a 30-minute quickstart.
+Planning to deploy Build-Fixer in your organization? 
+
+**🚀 [Quick Start: Rollout Getting Started Guide](ROLLOUT_GETTING_STARTED.md)** - 30-minute orientation  
+**📊 [Visual Summary](ROLLOUT_VISUAL_SUMMARY.md)** - At-a-glance overview with diagrams
 
 ### Complete Rollout Documentation
 
