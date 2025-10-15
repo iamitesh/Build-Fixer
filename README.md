@@ -14,6 +14,7 @@ An intelligent Azure DevOps pipeline integration tool that automatically analyze
 - [Azure DevOps Pipeline Integration](#azure-devops-pipeline-integration)
 - [Components](#components)
 - [Example Workflow](#example-workflow)
+- [Rollout Plan](#rollout-plan)
 
 ## Overview
 
@@ -314,6 +315,41 @@ See [azure-pipeline-example.yml](azure-pipeline-example.yml) for a complete exam
    - Recommendations: Step-by-step fix instructions
    - Tags: build-failure, automated
 5. **Team is notified** via Azure DevOps and can immediately start resolution
+
+## Rollout Plan
+
+Planning to deploy Build-Fixer in your organization? 
+
+**🚀 [Quick Start: Rollout Getting Started Guide](ROLLOUT_GETTING_STARTED.md)** - 30-minute orientation  
+**📊 [Visual Summary](ROLLOUT_VISUAL_SUMMARY.md)** - At-a-glance overview with diagrams
+
+### Complete Rollout Documentation
+
+### 📋 [Multi-Phase Rollout Plan](ROLLOUT_PLAN.md)
+Strategic plan covering all phases from POC to enterprise scale:
+- **Phase 1: Proof of Concept (POC)** - 2-4 weeks with 1-2 projects
+- **Phase 2: Pilot/Beta** - 4-6 weeks with 5-10 projects
+- **Phase 3: Limited Production** - 6-8 weeks with 25-50 projects
+- **Phase 4: Full Production** - 8-12 weeks with all projects
+- **Phase 5: Enterprise Scale** - Ongoing optimization and enhancement
+
+Includes success metrics, risk mitigation, budget planning, and governance frameworks.
+
+### ✅ [Implementation Checklist](IMPLEMENTATION_CHECKLIST.md)
+Detailed, actionable checklists for each phase with:
+- Week-by-week tasks and deliverables
+- Infrastructure setup steps
+- Testing and validation procedures
+- Gate criteria and approvals
+- Continuous operations guidance
+
+### 🎯 [Decision Framework](DECISION_FRAMEWORK.md)
+Best practices and decision guides for:
+- Phase progression decisions
+- Technical choices (AWS regions, Bedrock models, architecture)
+- Operational decisions (SLAs, support, budgets)
+- Common pitfalls and how to avoid them
+- Decision templates and quick reference guides
 
 ## License
 
