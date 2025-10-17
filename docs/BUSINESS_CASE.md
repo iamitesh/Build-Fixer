@@ -104,8 +104,10 @@ Build Failure → Automatic Log Analysis → AI-Powered RCA → Work Item Creati
 **Assumptions:**
 - 10-person development team
 - Average fully loaded developer cost: $100/hour
-- Average build failures per day: 4
+- Average build failures per day: 4 (adjust based on your team's historical data)
 - Working days per year: 250
+
+> **Note**: The assumption of 4 build failures per day is based on typical active development teams. Teams should adjust this number based on their own historical data for more accurate ROI calculations. Larger teams or teams with complex CI/CD pipelines may experience more failures, while smaller teams may experience fewer.
 
 **Annual Cost Without Build-Fixer:**
 - Time spent per failure: 45 minutes average
@@ -629,8 +631,8 @@ Build-Fixer aligns with key organizational objectives:
 
 #### Infrastructure Resources
 - **AWS Resources:**
-  - S3 bucket (minimal cost: ~$1-5)
-  - Bedrock API calls (estimated: $20-50 for POC)
+  - S3 bucket (minimal cost: ~$1-5 for 1GB storage + requests)
+  - Bedrock API calls (estimated: $30-40 for POC based on ~20-30 analyses with Claude 3 Sonnet at ~$0.003 per 1K input tokens and ~$0.015 per 1K output tokens, assuming ~50K tokens per analysis)
   
 - **Azure DevOps:**
   - Test project (if not using existing)
@@ -879,6 +881,6 @@ For questions or to discuss this business case:
 ---
 
 **Document Version**: 1.0  
-**Last Updated**: 2024  
+**Last Updated**: October 2024  
 **Owner**: DevOps Team  
 **Status**: Proposed
