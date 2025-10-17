@@ -25,6 +25,7 @@ Build-Fixer is an intelligent CI/CD tool that automatically analyzes failed buil
 - [Azure DevOps Pipeline Integration](#azure-devops-pipeline-integration)
 - [API Documentation](#api-documentation)
 - [Examples](#examples)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 
 ## 💡 Justification
@@ -456,6 +457,28 @@ Process a build failure from an existing S3 log file.
 See the `examples/` directory for:
 - `usage-example.js`: Programmatic usage examples
 - `azure-pipeline.yml`: Complete Azure DevOps pipeline integration
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[Business Case & Implementation Plan](docs/BUSINESS_CASE.md)**: Detailed business justification, ROI analysis, architecture approaches, development efforts reduction, and complete POC plan
+- **[Architecture](docs/ARCHITECTURE.md)**: Detailed technical architecture and design patterns
+- **[API Reference](docs/API.md)**: Complete API documentation for all classes and methods
+- **[Quick Start Guide](docs/QUICK_START.md)**: Fast-track setup and usage guide
+- **[Troubleshooting](docs/TROUBLESHOOTING.md)**: Common issues and solutions
+
+### Key Resources
+
+For stakeholders and decision-makers:
+- 📊 [Business Case & ROI Analysis](docs/BUSINESS_CASE.md#business-justification) - Detailed cost-benefit analysis and ROI calculations
+- 🎯 [POC Plan](docs/BUSINESS_CASE.md#4-poc-proof-of-concept-plan) - Complete 4-week proof of concept implementation plan
+- 📈 [Development Efforts Reduction](docs/BUSINESS_CASE.md#3-development-efforts-reduction) - Time savings and productivity improvements
+
+For technical teams:
+- 🏗️ [Architecture Overview](docs/BUSINESS_CASE.md#2-architecture) - High-level and component architecture
+- 🛠️ [Quick Start Guide](docs/QUICK_START.md) - Get started in minutes
+- 🔧 [API Documentation](docs/API.md) - Integrate into your own tools
 
 ## 🤝 Contributing
 
